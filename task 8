@@ -1,0 +1,35 @@
+
+import java.util.Scanner;
+
+public class Task08 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int[] arr = new int[10];
+
+        // Takes input
+        for (int i = 0; i < 10; i++) {
+            System.out.print("Enter number: ");
+            arr[i] = sc.nextInt();
+        }
+
+        // Bubble Sort compares adjacent elements
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9 - i; j++) {
+                // Swaps elements if they are in the wrong order
+                if (arr[j] > arr[j + 1]) {
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+
+        // Displays the sorted array
+        System.out.println("Ascending order:");
+        for (int i = 0; i < 10; i++) {
+            System.out.print(arr[i] + " ");
+        }
+
+        sc.close();
+    }
+}

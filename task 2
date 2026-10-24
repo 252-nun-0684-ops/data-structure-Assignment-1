@@ -1,0 +1,55 @@
+
+import java.util.Scanner; // Imports Scanner
+
+public class Task02 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int[] arr = new int[10]; // Array of 10 integers
+
+        // Takes array input
+        for (int i = 0; i < 10; i++) {
+            System.out.print("Enter number: ");
+            arr[i] = sc.nextInt();
+        }
+
+        int max = arr[0], min = arr[0]; // Initial maximum and minimum
+        int maxIndex = 0, minIndex = 0; // Their indices
+        int secondMin = 0, secondIndex = -1; // Second minimum
+        boolean found = false; // Checks if second minimum exists
+
+        // Finds maximum and minimum
+        for (int i = 1; i < 10; i++) {
+            if (arr[i] > max) {
+                max = arr[i];
+                maxIndex = i;
+            }
+            if (arr[i] < min) {
+                min = arr[i];
+                minIndex = i;
+            }
+        }
+
+        // Finds the smallest value greater than min
+        for (int i = 0; i < 10; i++) {
+            if (arr[i] > min &&
+                (!found || arr[i] < secondMin)) {
+                secondMin = arr[i];
+                secondIndex = i;
+                found = true;
+            }
+        }
+
+        // Displays results and indices
+        System.out.println("Maximum: " + max + ", Index: " + maxIndex);
+        System.out.println("Minimum: " + min + ", Index: " + minIndex);
+
+        if (found) {
+            System.out.println("Second minimum: " + secondMin
+                    + ", Index: " + secondIndex);
+        } else {
+            System.out.println("No second distinct minimum exists.");
+        }
+
+        sc.close();
+    }
+}
